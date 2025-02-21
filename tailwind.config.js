@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors : {
-        primaryColor: "#D32F2F", // Red
-        secondaryColor: "#212121", // Black
+        primaryColor: "#212121", // Black
+        secondaryColor: "#FF8C00", // orange
       }
     },
   },

@@ -13,10 +13,12 @@ const baseQuery = fetchBaseQuery({
         if(token){
             headers.set('authorization',`${token}`);
         }
+        headers.set('Content-Type', 'application/json');
         return headers;
     }
 });
 //Customizing queries with baseQuery (Redux)
+ // eslint-disable-next-line @typescript-eslint/no-explicit-any
  const baseQueryWithRefreshToken : BaseQueryFn<FetchArgs, BaseQueryApi, DefinitionType>  = async( args , api , extraOptions) : Promise<any>=>{
     const result = await baseQuery(args , api , extraOptions);
     

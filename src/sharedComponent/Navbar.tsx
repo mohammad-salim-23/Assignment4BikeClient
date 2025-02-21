@@ -1,8 +1,18 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../redux/hooks";
+import { useCurrenttoken } from "../redux/features/auth/authSlice";
+import { verifyToken } from "../utils/verifyToken";
 
 
 
 const Navbar = () => {
+const token = useAppSelector(useCurrenttoken);
+    let  user ; 
+    if(token){
+        user = verifyToken(token);
+    }
+
+  
 
 
   return (
@@ -16,7 +26,7 @@ const Navbar = () => {
       </ul>
       
       {/* Right Section: Login / Profile */}
-      {/* <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4">
         {!user ? (
           <div className="flex gap-3">
             <Link to="/signin">
@@ -32,11 +42,10 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-3">
-            <img src={user?.photoURL} alt="Profile" className="w-10 h-10 rounded-full" />
-            <span className="font-medium text-gray-700">{user.displayName}</span>
+           <Link to={`$role/dashboard`}> <h2 className="font-bold">Dashboard</h2></Link>
           </div>
         )}
-      </div> */}
+      </div>
     </nav>
   );
 };

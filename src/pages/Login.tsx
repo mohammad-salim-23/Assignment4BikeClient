@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { SubmitHandler } from "react-hook-form";
@@ -23,7 +23,7 @@ const Login = () => {
 
   // React Hook Form Setup
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<{ email: string; password: string }>({
@@ -35,7 +35,7 @@ const Login = () => {
     const toastId = toast.loading("Logging in...");
     try {
       const userInfo = {
-        id: data.email,
+        email: data.email,
         password: data.password,
       };
       const res = await login(userInfo).unwrap();
@@ -52,44 +52,54 @@ const Login = () => {
   };
 
   return (
-    <Row justify="center" align="middle" style={{ height: "100vh" }}>
-      <Col xs={24} sm={16} md={12} lg={8}>
-        <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
-          <Form.Item label="Email" validateStatus={errors.email ? "error" : ""} help={errors.email?.message}>
-            <Input
-              {...register("email")}
-              placeholder="Enter your email"
-              style={{
-                border: "1px solid black",
-                transition: "border 0.3s ease",
-              }}
-              onMouseOver={(e) => (e.currentTarget.style.border = "1px solid green")}
-              onMouseOut={(e) => (e.currentTarget.style.border = "1px solid black")}
-            />
-          </Form.Item>
-
-          <Form.Item label="Password" validateStatus={errors.password ? "error" : ""} help={errors.password?.message}>
-            <Input.Password
-              {...register("password")}
-              placeholder="Enter your password"
-              style={{
-                border: "1px solid black",
-                transition: "border 0.3s ease",
-              }}
-              onMouseOver={(e) => (e.currentTarget.style.border = "1px solid green")}
-              onMouseOut={(e) => (e.currentTarget.style.border = "1px solid black")}
-            />
-          </Form.Item>
-
-          <Form.Item>
-            <Button
-              className=""
+    <div className="flex flex-col justify-center items-center min-h-screen px-4">
+      <div className="max-w-md text-center">
+        <h1 className="text-2xl font-bold mb-2">Sign In</h1>
+        <hr className="border-t border-gray-400 my-4" />
+        <p className="text-gray-600 mb-6">
+          Enter your email and password to get started. With BORCELLE_MOTOBIKE.com account, you can order parts, gear, and accessories, manage your order history, and store addresses for faster checkout.
+        </p>
+      </div>
+  
+      <Row justify="center" align="middle" style={{ width: "100%" }}>
+        <Col xs={24} sm={16} md={12} lg={8}>
+          <Form onFinish={handleSubmit(onSubmit)} layout="vertical">
+            <Form.Item label="Email" validateStatus={errors.email ? "error" : ""} help={errors.email?.message}>
+              <Controller
+                name="email"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    placeholder="Enter your email"
+                    className="border border-black transition-all duration-300 hover:border-green-500"
+                  />
+                )}
+              />
+            </Form.Item>
+  
+            <Form.Item label="Password" validateStatus={errors.password ? "error" : ""} help={errors.password?.message}>
+              <Controller
+                name="password"
+                control={control}
+                render={({ field }) => (
+                  <Input.Password
+                    {...field}
+                    placeholder="Enter your password"
+                    className="border border-black transition-all duration-300 hover:border-green-500"
+                  />
+                )}
+              />
+            </Form.Item>
+  
+            <Form.Item>
+            <Button className="bg-secondaryColor"
               style={{
                 color: "#212121",
                 border: "1px solid black",
                 transition: "border 0.3s ease",
               }}
-              onMouseOver={(e) => (e.currentTarget.style.border = "1px solid green")}
+              onMouseOver={(e) => (e.currentTarget.style.border = "1px solid orange")}
               onMouseOut={(e) => (e.currentTarget.style.border = "1px solid black")}
               type="default"
               htmlType="submit"
@@ -97,11 +107,13 @@ const Login = () => {
             >
               Login
             </Button>
-          </Form.Item>
-        </Form>
-      </Col>
-    </Row>
+            </Form.Item>
+          </Form>
+        </Col>
+      </Row>
+    </div>
   );
+  
 };
 
 export default Login;
