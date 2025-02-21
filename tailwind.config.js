@@ -6,7 +6,12 @@ export default {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      colors : {
+        primaryColor: "#D32F2F", // Red
+        secondaryColor: "#212121", // Black
+      }
+    },
   },
   plugins: [
     require('daisyui'),
