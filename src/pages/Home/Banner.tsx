@@ -37,7 +37,7 @@ const Banner = () => {
         <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#1E3A8A] to-[rgba(255, 255, 255, 0.7)]">
           <div className="text-white space-y-6 p-6 md:pl-12 w-3/4 md:w-1/2">
             <h2 className="text-3xl md:text-6xl font-bold">
-              Unleash Your Cycling Passion 🌍
+              Unleash Your Cycling Passion 
             </h2>
             <p className="text-lg md:text-2xl">
               Premium bikes designed for every terrain and adventure.
