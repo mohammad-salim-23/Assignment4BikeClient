@@ -6,6 +6,7 @@ import AdminDashboard from "../dashboard/admin/AdminDashboard";
 import UserDashboard from "../dashboard/user/UserDashboard";
 import ProtectedRoute from "../component/layout/ProtectedRoute";
 import SignUp from "../pages/SignUp";
+import AllProducts from "../pages/AllProducts/AllProducts";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: "/signup",
                 element : <SignUp></SignUp>
+            },
+            {
+                path :"/allProducts",
+                element : <AllProducts></AllProducts>
             }
             
         ]
