@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import AdminDashboard from "../dashboard/admin/AdminDashboard";
 import UserDashboard from "../dashboard/user/UserDashboard";
 import ProtectedRoute from "../component/layout/ProtectedRoute";
+import SignUp from "../pages/SignUp";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
               path: "/login",
               element: <Login></Login>
             },
+            {
+                path: "/signup",
+                element : <SignUp></SignUp>
+            }
             
         ]
     
