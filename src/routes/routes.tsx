@@ -47,12 +47,10 @@ const router = createBrowserRouter([
         path : "dashboard",
         element : (
             <>
-                <ProtectedRoute role="user">
+                
                     <Dashboard></Dashboard>
-                </ProtectedRoute>
-                <ProtectedRoute role="admin">
-                    <Dashboard></Dashboard>
-                </ProtectedRoute>
+               
+               
             </>
         )
     }
