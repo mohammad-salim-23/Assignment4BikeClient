@@ -44,8 +44,9 @@ const Navbar = () => {
       {/* Center Section: Navigation Items (Desktop) */}
       <ul className="hidden md:flex space-x-6 text-lg font-medium">
         <li><Link to="/" className="hover:text-primaryColor">Home</Link></li>
+        <li><Link to="/allProducts" className="hover:text-primaryColor">All Products</Link></li>
         <li><Link to="/about" className="hover:text-primaryColor">About</Link></li>
-        <li><Link to="/contact" className="hover:text-primaryColor">Contact</Link></li>
+       
       </ul>
 
       {/* Right Section: Login / Profile */}
