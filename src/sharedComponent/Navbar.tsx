@@ -41,7 +41,7 @@ const Navbar = () => {
         {menuOpen ? <FiX /> : <FiMenu />}
       </button>
 
-      {/* Center Section: Navigation Items (Desktop) */}
+      {/* Center Section:(Desktop) */}
       <ul className="hidden md:flex space-x-6 text-lg font-medium">
         <li><Link to="/" className="hover:text-primaryColor">Home</Link></li>
         <li><Link to="/allProducts" className="hover:text-primaryColor">All Products</Link></li>
@@ -66,7 +66,7 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-3">
-            <Link to={`/${Role}/dashboard`} className="font-bold">Dashboard</Link>
+            <Link to={`/dashboard`} className="font-bold">Dashboard</Link>
             <button onClick={handleLogout} className="border border-red-500 text-red-500 px-4 py-2 rounded-md hover:bg-red-500 hover:text-white">
              
               Logout
@@ -77,11 +77,12 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {menuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden">
+        <div className="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden z-50">
           <ul className="flex flex-col space-y-4 p-4 text-lg font-medium">
             <li><Link to="/" className="hover:text-primaryColor" onClick={() => setMenuOpen(false)}>Home</Link></li>
+            <li><Link to="/allProducts" className="hover:text-primaryColor" onClick={() => setMenuOpen(false)}>All Products</Link></li>
             <li><Link to="/about" className="hover:text-primaryColor" onClick={() => setMenuOpen(false)}>About</Link></li>
-            <li><Link to="/contact" className="hover:text-primaryColor" onClick={() => setMenuOpen(false)}>Contact</Link></li>
+           
             {user && (
               <>
                 <li><Link to={`/${user?.role}/dashboard`} onClick={() => setMenuOpen(false)}>Dashboard</Link></li>

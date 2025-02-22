@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../CSSdesign/All.css";
 
 const Banner = () => {
@@ -17,9 +18,9 @@ const Banner = () => {
             <p className="text-lg md:text-2xl">
               Explore top-quality bikes and accessories for every adventure.
             </p>
-            <button className="btn bg-secondaryColor text-lg px-6 py-2 rounded-lg shadow-md">
+            <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor" to="/allProducts">  
               Shop Now
-            </button>
+           </Link>
           </div>
         </div>
         <div className="absolute flex justify-between items-center w-full px-4 bottom-4">
@@ -39,12 +40,12 @@ const Banner = () => {
             <h2 className="text-3xl md:text-6xl font-bold">
               Unleash Your Cycling Passion 
             </h2>
-            <p className="text-lg md:text-2xl">
+            <p className="text-lg md:text-2xl mb-4">
               Premium bikes designed for every terrain and adventure.
             </p>
-            <button className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor">
+          <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor" to="/allProducts">  
               Shop Now
-            </button>
+           </Link>
           </div>
         </div>
         <div className="absolute flex justify-between items-center w-full px-4 bottom-4">

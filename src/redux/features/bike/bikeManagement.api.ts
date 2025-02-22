@@ -28,6 +28,17 @@ const bikeManagementApi = baseApi.injectEndpoints({
                 }
             }
         }),
+        getSingleBike : builder.query({
+            query: (id)=>({
+                url : `/bike/${id}`,
+                method: "GET",
+            }),
+            transformResponse: (response : TResponseRedux<TBike>)=>{
+                return {
+                    data : response?.data
+                }
+            }
+        }),
         createBike : builder.mutation({
             query: (newBike)=>({
                 url : "/bike",
@@ -37,4 +48,4 @@ const bikeManagementApi = baseApi.injectEndpoints({
         })
     })
 })
-export const {useGetAllBikesQuery, useCreateBikeMutation} = bikeManagementApi;
+export const {useGetAllBikesQuery,  useGetSingleBikeQuery,useCreateBikeMutation} = bikeManagementApi;

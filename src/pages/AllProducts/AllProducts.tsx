@@ -107,7 +107,7 @@ console.log(data);
               <p><strong>Category:</strong> {bike.category}</p>
               <p><strong>Price:</strong> ${bike.price}</p>
               <p><strong>Availability:</strong> {bike.availability ? "In Stock" : "Out of Stock"}</p>
-              <Link to={`/bike/${bike._id}`} className="btn bg-secondaryColor mt-3  text-center font-bold flex items-center">
+              <Link to={`/productDetails/${bike._id}`} className="btn bg-secondaryColor mt-3  text-center font-bold flex items-center">
                 View Details
               </Link>
             </div>
