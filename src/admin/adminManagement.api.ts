@@ -56,4 +56,4 @@ const adminManagemintApi = baseApi.injectEndpoints({
     }),
 });
 
-export const { useCreateBikeMutation, useGetAllUserQuery } = adminManagemintApi;
+export const { useCreateBikeMutation, useGetAllUserQuery, useUpdateBikeMutation, useDeleteBikeMutation } = adminManagemintApi;
