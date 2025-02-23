@@ -36,6 +36,8 @@ const Dashboard = () => {
                             <li><NavLink to="/admin/dashboard/totalUsers"><FaUsers /> Total Users</NavLink></li>
                             <li><NavLink to="/admin/dashboard/totalOrders"><FaClipboardList /> Total Orders</NavLink></li>
                             <li><NavLink to="/admin/dashboard/myProfile"><FaUserAlt /> My Profile</NavLink></li>
+
+                            <li><NavLink to="/admin/dashboard/profileSetting"><FaUserAlt /> Profile Setting</NavLink></li>
                         </>
                     )}
 
@@ -43,15 +45,17 @@ const Dashboard = () => {
                     {Role === "user" && (
                         <>
                             <li><NavLink to="/user/dashboard/myProfile"><FaUserAlt /> My Profile</NavLink></li>
+                            <li><NavLink to="/user/dashboard/profileSetting"><FaUserAlt /> Profile Setting</NavLink></li>
                         </>
+                        
                     )}
 
-                    {/* Unauthorized Access */}
+                  
                     {!Role && <li className="text-red-500 text-center font-bold">Unauthorized Access</li>}
 
                     <div className="divider"></div>
 
-                    {/* Shared Navigation Links */}
+              
                     <li><NavLink to="/"><FaHome /> Home</NavLink></li>
                 </ul>
             </div>

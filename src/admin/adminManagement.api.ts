@@ -60,7 +60,18 @@ const adminManagemintApi = baseApi.injectEndpoints({
                 body: {isBlocked : status},
             }),
         }),
+        changePassword : builder.mutation({
+            query: (data)=>(
+                {
+                    url:'/auth/change-password',
+                    method : 'POST',
+                    body : data
+                }
+            )
+        })
     }),
 });
 
-export const { useCreateBikeMutation, useGetAllUserQuery, useUpdateBikeMutation, useDeleteBikeMutation , useUpdateUserMutation} = adminManagemintApi;
+export const { useCreateBikeMutation, useGetAllUserQuery, useUpdateBikeMutation, useDeleteBikeMutation , useUpdateUserMutation,
+    useChangePasswordMutation
+} = adminManagemintApi;
