@@ -53,7 +53,14 @@ const adminManagemintApi = baseApi.injectEndpoints({
                 method: 'DELETE',
             }),
         }),
+        updateUser: builder.mutation({
+            query: ({ id, status }) => ({
+                url: `/auth/users/${id}`,
+                method: 'PATCH', 
+                body: {isBlocked : status},
+            }),
+        }),
     }),
 });
 
-export const { useCreateBikeMutation, useGetAllUserQuery, useUpdateBikeMutation, useDeleteBikeMutation } = adminManagemintApi;
+export const { useCreateBikeMutation, useGetAllUserQuery, useUpdateBikeMutation, useDeleteBikeMutation , useUpdateUserMutation} = adminManagemintApi;
