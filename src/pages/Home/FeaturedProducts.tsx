@@ -30,7 +30,7 @@ const FeaturedProducts = () => {
               <p><strong>Availability:</strong> {bike.availability ? "In Stock" : "Out of Stock"}</p>
               <Link
                 to={`/productDetails/${bike._id}`}
-                className="btn bg-secondaryColor mt-3  text-center font-bold flex items-center"
+                className="btn bg-secondaryColor mt-3  text-center  flex items-center text-white font-semibold"
               >
                 View Details
               </Link>
@@ -45,7 +45,7 @@ const FeaturedProducts = () => {
       <div className="text-center mt-6">
         <Link
           to="/allProducts"
-          className="bg-secondaryColor text-white px-6 py-2 rounded-md font-bold"
+          className="bg-secondaryColor text-white px-6 py-2 rounded-md font-semibold btn"
         >
           View All
         </Link>

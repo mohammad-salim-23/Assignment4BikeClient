@@ -57,7 +57,7 @@ const TotalUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {getCurrentUsers().map((user, index) => (
+            {getCurrentUsers().map((user , index) => (
               <tr key={user._id} className="border-b hover:bg-gray-100 transition">
                 <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
                 <td>{user.name}</td>

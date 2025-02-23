@@ -9,7 +9,7 @@ export default {
     extend: {
       colors : {
         primaryColor: "#212121", // Black
-        secondaryColor: "#FF8C00", // orange
+        secondaryColor: "#f97316", // orange
       }
     },
   },
