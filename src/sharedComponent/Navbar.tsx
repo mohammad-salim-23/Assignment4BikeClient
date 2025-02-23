@@ -66,7 +66,8 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-3">
-            <Link to={`/dashboard`} className="font-bold">Dashboard</Link>
+              <Link to={`/${user?.role}/dashboard`} onClick={() => setMenuOpen(false)}>Dashboard</Link>
+              
             <button onClick={handleLogout} className="border border-red-500 text-red-500 px-4 py-2 rounded-md hover:bg-red-500 hover:text-white">
              
               Logout

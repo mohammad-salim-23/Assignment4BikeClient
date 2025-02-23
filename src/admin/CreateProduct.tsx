@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useCreateBikeMutation } from "./adminManagement.api";
 
 
-const AddProduct = () => {
+const CreateProduct= () => {
   const { register, handleSubmit, reset } = useForm<ProductFormData>();
   const navigate = useNavigate();
   const [createProduct] = useCreateBikeMutation(); 
@@ -53,8 +53,8 @@ const onSubmit = async (data: ProductFormData) => {
         };
 
         const response = await createProduct(newProduct).unwrap();
-
-        if (response.insertedId) {
+       console.log(response);
+        if (response.success) {
             reset();
             Swal.fire({
                 title: "Success!",
@@ -62,7 +62,7 @@ const onSubmit = async (data: ProductFormData) => {
                 icon: "success",
                 confirmButtonText: "Cool",
             });
-            navigate("/adminPanel/allProduct");
+            // navigate("/adminPanel/allProduct");
         }
     } catch (error) {
         console.error("Error adding product:", error);
@@ -76,8 +76,8 @@ const onSubmit = async (data: ProductFormData) => {
 };
 
   return (
-    <div className="max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center text-green-600">
+    <div className="w-full max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-lg">
+      <h2 className="text-2xl font-bold mb-6 text-center text-orange-400  transition-colors">
         Add a New Product
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -184,7 +184,7 @@ const onSubmit = async (data: ProductFormData) => {
         </div>
         <button
           type="submit"
-          className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"
+          className="w-full bg-secondaryColor text-primaryColor font-bold p-2 rounded hover:bg-orange-600"
         >
           Add Product
         </button>
@@ -193,4 +193,4 @@ const onSubmit = async (data: ProductFormData) => {
   );
 };
 
-export default AddProduct;
+export default CreateProduct;

@@ -8,6 +8,7 @@ import AllProducts from "../pages/AllProducts/AllProducts";
 import ProductDetails from "../component/ProductDetails";
 import About from "../pages/About/About";
 import Dashboard from "../dashboard/Dashboard";
+import CreateProduct from "../admin/CreateProduct";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -44,15 +45,16 @@ const router = createBrowserRouter([
     },
     //admin routes
     {
-        path : "dashboard",
-        element : (
-            <>
-                
+        path : ":role/dashboard",
+        element :     
                     <Dashboard></Dashboard>
-               
-               
-            </>
-        )
+        ,
+        children:[
+            {
+                path: "createProduct",
+                element: <CreateProduct></CreateProduct>
+            }
+        ]
     }
 ])
 export default router;
