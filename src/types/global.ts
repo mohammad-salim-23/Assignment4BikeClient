@@ -45,7 +45,17 @@ export type TBike = {
   updatedAt: string;
 };
 //order type
-
+export type TOrder = {
+  id :string ;
+  userEmail : string;
+  productName : string;
+  productBrand : string;
+  productImage : string;
+  quantity : number;
+  totalPrice : number;
+  paymentStatus: "pending" | "paid" | "failed";
+  paymentMethod: "stripe";
+}
 // Redux API Response for Bikes
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
 

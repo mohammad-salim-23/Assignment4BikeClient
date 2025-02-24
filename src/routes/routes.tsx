@@ -12,6 +12,7 @@ import AllProductsAdmin from "../admin/AllProductsAdmin";
 import TotalUsers from "../admin/TotalUsers";
 import MyProfile from "../sharedComponent/MyProfile";
 import ProfileSetting from "../admin/users/ProfileSetting";
+import CheckOut from "../order/CheckOut";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path : "/about",
                 element: <About></About>
+            },
+            {
+                path:"/checkOut",
+                element : <CheckOut></CheckOut>
             }
         
             

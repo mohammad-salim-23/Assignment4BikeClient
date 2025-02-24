@@ -1,5 +1,5 @@
 import { baseApi } from "../redux/api/baseapi";
-import { TQueryParam, TResponseRedux } from "../types/global";
+import { TOrder, TQueryParam, TResponseRedux } from "../types/global";
 
 const orderManagementApi = baseApi.injectEndpoints(
     {
@@ -20,12 +20,12 @@ const orderManagementApi = baseApi.injectEndpoints(
                     params : params
                 };
             },
-            // transformResponse: (response: TResponseRedux<TOrder[]>) => {
-            //     return {
-            //         data: response?.data,
-            //         meta: response?.meta,
-            //     };
-            // },
+            transformResponse: (response: TResponseRedux<TOrder[]>) => {
+                return {
+                    data: response?.data,
+                    meta: response?.meta,
+                };
+            },
            }),
            getSingleOrder : builder.query({
             query : (id)=>({
