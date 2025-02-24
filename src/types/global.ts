@@ -44,6 +44,7 @@ export type TBike = {
   createdAt: string;
   updatedAt: string;
 };
+//order type
 
 // Redux API Response for Bikes
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;
