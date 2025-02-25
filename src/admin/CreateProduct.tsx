@@ -1,14 +1,16 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
 import { useCreateBikeMutation } from "./adminManagement.api";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const CreateProduct= () => {
+const CreateProduct = () => {
   const { register, handleSubmit, reset } = useForm<ProductFormData>();
-  const navigate = useNavigate();
+
   const [createProduct] = useCreateBikeMutation(); 
-interface ProductFormData {
+
+  interface ProductFormData {
     name: string;
     brand: string;
     model: string;
@@ -18,11 +20,11 @@ interface ProductFormData {
     availability: string;
     engineCapacity: string;
     color: string;
-    image: string;
+    image: FileList;
     description: string;
-}
+  }
 
-interface NewProduct {
+  interface NewProduct {
     name: string;
     brand: string;
     model: string;
@@ -34,46 +36,56 @@ interface NewProduct {
     color: string[];
     image: string;
     description: string;
-}
+  }
 
-const onSubmit = async (data: ProductFormData) => {
+  const onSubmit = async (data: ProductFormData) => {
     try {
-        const newProduct: NewProduct = {
-            name: data.name,
-            brand: data.brand,
-            model: data.model,
-            category: data.category,
-            price: parseFloat(data.price),
-            stock: parseInt(data.stock, 10),
-            availability: data.availability === "true",
-            engineCapacity: parseInt(data.engineCapacity, 10),
-            color: data.color.split(","),
-            image: data.image,
-            description: data.description,
-        };
+      const formData = new FormData();
+      formData.append("image", data.image[0]);
 
-        const response = await createProduct(newProduct).unwrap();
-       console.log(response);
-        if (response.success) {
-            reset();
-            Swal.fire({
-                title: "Success!",
-                text: "Product Added Successfully",
-                icon: "success",
-                confirmButtonText: "Cool",
-            });
-            // navigate("/adminPanel/allProduct");
-        }
-    } catch (error) {
-        console.error("Error adding product:", error);
+      const uploadResponse = await fetch(image_hosting_api, {
+        method: "POST",
+        body: formData,
+      }).then(res => res.json());
+
+      if (!uploadResponse.success) {
+        throw new Error("Image upload failed");
+      }
+
+      const newProduct: NewProduct = {
+        name: data.name,
+        brand: data.brand,
+        model: data.model,
+        category: data.category,
+        price: parseFloat(data.price),
+        stock: parseInt(data.stock, 10),
+        availability: data.availability === "true",
+        engineCapacity: parseInt(data.engineCapacity, 10),
+        color: data.color.split(","),
+        image: uploadResponse.data.url,
+        description: data.description,
+      };
+
+      const response = await createProduct(newProduct).unwrap();
+      if (response.success) {
+        reset();
         Swal.fire({
-            title: "Error!",
-            text: "Failed to add product. Please try again.",
-            icon: "error",
-            confirmButtonText: "OK",
+          title: "Success!",
+          text: "Product Added Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
         });
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "Failed to add product. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
-};
+  };
 
   return (
     <div className="w-full max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-lg">
@@ -83,109 +95,52 @@ const onSubmit = async (data: ProductFormData) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label className="block font-semibold">Product Name*</label>
-          <input
-            type="text"
-            {...register("name", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Product Name"
-          />
+          <input type="text" {...register("name", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Product Name" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Brand*</label>
-          <input
-            type="text"
-            {...register("brand", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Brand"
-          />
+          <input type="text" {...register("brand", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Brand" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Model*</label>
-          <input
-            type="text"
-            {...register("model", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Model"
-          />
+          <input type="text" {...register("model", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Model" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Category*</label>
-          <input
-            type="text"
-            {...register("category", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Category"
-          />
+          <input type="text" {...register("category", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Category" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Price*</label>
-          <input
-            type="number"
-            step="0.01"
-            {...register("price", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Price"
-          />
+          <input type="number" step="0.01" {...register("price", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Price" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Stock*</label>
-          <input
-            type="number"
-            {...register("stock", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Stock Quantity"
-          />
+          <input type="number" {...register("stock", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Stock Quantity" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Availability*</label>
-          <select
-            {...register("availability", { required: true })}
-            className="w-full p-2 border rounded"
-          >
+          <select {...register("availability", { required: true })} className="w-full p-2 border rounded">
             <option value="true">Available</option>
             <option value="false">Unavailable</option>
           </select>
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Engine Capacity (cc)*</label>
-          <input
-            type="number"
-            {...register("engineCapacity", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Engine Capacity"
-          />
+          <input type="number" {...register("engineCapacity", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Engine Capacity" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Color (Comma Separated)*</label>
-          <input
-            type="text"
-            {...register("color", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="e.g. Red, Blue, Black"
-          />
+          <input type="text" {...register("color", { required: true })} className="w-full p-2 border rounded" placeholder="e.g. Red, Blue, Black" />
         </div>
         <div className="mb-4">
-          <label className="block font-semibold">Image URL*</label>
-          <input
-            type="text"
-            {...register("image", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Image URL"
-          />
+          <label className="block font-semibold">Upload Image*</label>
+          <input type="file" {...register("image", { required: true })} className="w-full p-2 border rounded" accept="image/*" />
         </div>
         <div className="mb-4">
           <label className="block font-semibold">Description*</label>
-          <textarea
-            {...register("description", { required: true })}
-            className="w-full p-2 border rounded"
-            placeholder="Enter Product Description"
-            rows={4}
-          />
+          <textarea {...register("description", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Product Description" rows={4} />
         </div>
-        <button
-          type="submit"
-          className="w-full bg-secondaryColor text-primaryColor font-bold p-2 rounded hover:bg-orange-600"
-        >
+        <button type="submit" className="w-full bg-secondaryColor text-primaryColor font-bold p-2 rounded hover:bg-orange-600">
           Add Product
         </button>
       </form>
