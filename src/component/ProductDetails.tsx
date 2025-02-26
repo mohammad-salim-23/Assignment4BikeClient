@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useGetSingleBikeQuery, useGetAllBikesQuery } from "../redux/features/bike/bikeManagement.api";
 
 
@@ -45,9 +45,11 @@ const ProductDetails = () => {
 
         {/* Add to Cart & Service Booking */}
         <div className="flex gap-4 mt-4">
-            <button className="bg-secondaryColor text-white px-6 py-2 rounded-lg shadow-md hover:bg-primaryColor transition">
-                Add to Cart
-            </button>
+        <Link to={`/checkout/${bike?._id}`}>
+    <button className="bg-secondaryColor text-white px-6 py-2 rounded-lg shadow-md hover:bg-orange-600 transition">
+        Buy Now
+    </button>
+</Link>
         </div>
     </div>
 </div>

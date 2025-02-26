@@ -13,6 +13,7 @@ import TotalUsers from "../admin/TotalUsers";
 import MyProfile from "../sharedComponent/MyProfile";
 import ProfileSetting from "../admin/users/ProfileSetting";
 import CheckOut from "../order/CheckOut";
+import Purchase from "../order/Purchase";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -43,8 +44,12 @@ const router = createBrowserRouter([
                 element: <About></About>
             },
             {
-                path:"/checkOut",
+                path:"/checkout/:id",
                 element : <CheckOut></CheckOut>
+            },
+            {
+                path : "/purchase",
+                element: <Purchase></Purchase>
             }
         
             

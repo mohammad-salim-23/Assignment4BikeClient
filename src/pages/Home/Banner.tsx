@@ -18,7 +18,7 @@ const Banner = () => {
             <p className="text-lg md:text-2xl">
               Explore top-quality bikes and accessories for every adventure.
             </p>
-            <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor" to="/allProducts">  
+            <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
               Shop Now
            </Link>
           </div>

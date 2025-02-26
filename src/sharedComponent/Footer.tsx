@@ -18,7 +18,7 @@ const Footer = () => {
           {/* Right Side: Links & Social Media */}
           <div className="text-center md:text-right">
            <Link to="/allProducts">
-           <button className="bg-orange-500 text-black font-bold py-2 px-4 rounded-full mb-3 mt-2">
+           <button className="bg-orange-500 text-black font-bold py-2 px-4 rounded-full mb-3 mt-2 hover:bg-orange-600">
               View Products →
             </button></Link>
             <div className="flex justify-center md:justify-end space-x-4 text-2xl">
@@ -39,8 +39,8 @@ const Footer = () => {
 </a>
             </div>
             <div className="mt-3">
-              <Link to="/about" className="hover:underline">About Us</Link> | 
-              <a href="#" className="hover:underline"> Privacy Policy</a>
+              <Link to="/" className="hover:underline hover:text-orange-400">Home</Link> | 
+              <Link to="/about" className="hover:underline hover:text-orange-400">About Us</Link>
             </div>
           </div>
         </div>
