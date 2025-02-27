@@ -38,7 +38,18 @@ const orderManagementApi = baseApi.injectEndpoints(
                 };
             },
            }),
-
+         //getOrder by userEmail
+         getOrderByUser: builder.query({
+            query : (userEmail)=>({
+                url: `/orders/user/${userEmail}`,
+                method : "GET",
+            }),
+            transformResponse : (response : TResponseRedux<TOrder[]>)=>{
+                return {
+                    data : response?.data,
+                }
+            }
+         }),
            createOrder : builder.mutation({
             query : (newOrder)=>({
                 url : "/orders",
@@ -52,5 +63,6 @@ const orderManagementApi = baseApi.injectEndpoints(
 export const {
    useGetAllOrdersQuery,
    useGetSingleOrderQuery,
-   useCreateOrderMutation
+   useCreateOrderMutation,
+   useGetOrderByUserQuery
 } = orderManagementApi;

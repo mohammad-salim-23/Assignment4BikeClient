@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { logout, useCurrenttoken } from "../redux/features/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
 import { useState } from "react";
-import { FiMenu, FiX } from "react-icons/fi"; // Import icons
+import { FiMenu, FiX } from "react-icons/fi"; 
 import logo from "../images/MotorcycleLogo.png";
 
 const Navbar = () => {
@@ -29,14 +29,14 @@ const Navbar = () => {
         </Link>
         {!user && (
           <Link to="/signup" className="md:hidden">
-          <button className="border border-orange-500 text-orange-500 px-4 py-2 rounded-md hover:bg-orange-500 hover:text-white transition">
+          <button className="border border-orange-500 text-orange-500 px-4 py-2 rounded-md hover:bg-orange-600 hover:text-white transition">
         Sign Up
       </button>
           </Link>
         )}
       </div>
 
-      {/* Hamburger Menu (Mobile) */}
+      {/*  (Mobile) */}
       <button className="md:hidden text-2xl text-white" onClick={() => setMenuOpen(!menuOpen)}>
         {menuOpen ? <FiX /> : <FiMenu />}
       </button>
@@ -59,12 +59,12 @@ const Navbar = () => {
         {!user ? (
           <div className="flex gap-3">
             <Link to="/login">
-              <button className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
+              <button className="bg-secondaryColor text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
                 Sign In
               </button>
             </Link>
             <Link to="/signup">
-              <button className="border border-orange-500 text-orange-500 px-4 py-2 rounded-md hover:bg-orange-500 hover:text-white transition">
+              <button className="border border-orange-500 text-orange-500 px-4 py-2 rounded-md hover:bg-orange-600 hover:text-white transition">
                 Sign Up
               </button>
             </Link>

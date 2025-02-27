@@ -14,6 +14,7 @@ import MyProfile from "../sharedComponent/MyProfile";
 import ProfileSetting from "../admin/users/ProfileSetting";
 import CheckOut from "../order/CheckOut";
 import Purchase from "../order/Purchase";
+import MyOrders from "../sharedComponent/MyOrders";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
             {
                 path: "profileSetting",
                 element : <ProfileSetting></ProfileSetting>
+            },
+            {
+                path : "myOrders",
+                element : <MyOrders></MyOrders>
             }
         ]
     }
