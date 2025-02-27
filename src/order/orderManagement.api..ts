@@ -57,6 +57,21 @@ const orderManagementApi = baseApi.injectEndpoints(
                 body : newOrder,
             })
            }),
+        //  update order
+        updateOrder : builder.mutation({
+            query : ({orderId , updatedData})=>({
+                url: `/orders/${orderId}`,
+                method: "PATCH",
+                body : updatedData
+            }),
+        }),
+        // delete order
+        deleteOrder : builder.mutation({
+            query : (orderId)=>({
+                url : `/orders/${orderId}`,
+                method : "DELETE"
+            }),
+        }),
         }),
     }
 );
@@ -64,5 +79,7 @@ export const {
    useGetAllOrdersQuery,
    useGetSingleOrderQuery,
    useCreateOrderMutation,
-   useGetOrderByUserQuery
+   useGetOrderByUserQuery,
+   useUpdateOrderMutation,
+   useDeleteOrderMutation
 } = orderManagementApi;
