@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetAllBikesQuery } from "../../redux/features/bike/bikeManagement.api";
-
+import { motion } from "framer-motion";
 const AllProducts = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
   const [searchTerm, setSearchTerm] = useState("");
@@ -112,26 +112,37 @@ const AllProducts = () => {
      {/* Bike Cards */}
 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
   {filteredBikes.length > 0 ? (
-    filteredBikes.map((bike) => (
-      <div key={bike._id} className="bg-black p-4 shadow-md rounded-lg">
-        <img src={bike.image} alt={bike.name} className="w-full h-48 object-cover mb-3 rounded" />
-        <h3 className="text-lg font-bold text-white">{bike.name}</h3>
-        <p className="text-gray-300"><strong>Brand:</strong> {bike.brand}</p>
-        <p className="text-gray-300"><strong>Model:</strong> {bike.model}</p>
-        <p className="text-gray-300"><strong>Category:</strong> {bike.category}</p>
-        <p className="text-gray-300"><strong>Price:</strong> ${bike.price}</p>
-        <p className="text-gray-300">
-          <strong>Availability:</strong> {bike.availability ? 
-            <span className="text-orange-400"> In Stock</span> : 
-            <span className="text-red-400"> Out of Stock</span>}
-        </p>
-        <Link
-          to={`/productDetails/${bike._id}`}
-          className="btn bg-secondaryColor mt-3 text-center  flex items-center justify-center text-white hover:bg-orange-600 py-2 px-4 font-bold rounded"
-            >
-          View Details
-        </Link>
-      </div>
+    filteredBikes.map((bike, index) => (
+      <motion.div
+      key={bike._id}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ scale: 1.05 }}
+      className="bg-black p-4 shadow-md rounded-lg"
+    >
+      <img
+        src={bike.image}
+        alt={bike.name}
+        className="w-full h-48 object-cover mb-3 rounded"
+      />
+      <h3 className="text-lg font-bold text-white">{bike.name}</h3>
+      <p className="text-gray-300"><strong>Brand:</strong> {bike.brand}</p>
+      <p className="text-gray-300"><strong>Model:</strong> {bike.model}</p>
+      <p className="text-gray-300"><strong>Category:</strong> {bike.category}</p>
+      <p className="text-gray-300"><strong>Price:</strong> ${bike.price}</p>
+      <p className="text-gray-300">
+        <strong>Availability:</strong> {bike.availability ? 
+          <span className="text-orange-400"> In Stock</span> : 
+          <span className="text-red-400"> Out of Stock</span>}
+      </p>
+      <Link
+        to={`/productDetails/${bike._id}`}
+        className="btn bg-secondaryColor mt-3 text-center flex items-center justify-center text-white hover:bg-orange-600 py-2 px-4 font-bold rounded"
+      >
+        View Details
+      </Link>
+    </motion.div>
     ))
   ) : (
     <p className="text-white">No bikes found.</p>
