@@ -34,9 +34,9 @@ const Dashboard = () => {
                             <li><NavLink to="/admin/dashboard/createProduct"><FaBox /> Create Product</NavLink></li>
                             <li><NavLink to="/admin/dashboard/allProduct"><FaList /> All Products</NavLink></li>
                             <li><NavLink to="/admin/dashboard/totalUsers"><FaUsers /> Total Users</NavLink></li>
-                            <li><NavLink to="/admin/dashboard/totalOrders"><FaClipboardList /> Total Orders</NavLink></li>
+                            <li><NavLink to="/admin/dashboard/manageOrders"><FaClipboardList /> Manage Orders</NavLink></li>
                             <li><NavLink to="/admin/dashboard/myProfile"><FaUserAlt /> My Profile</NavLink></li>
-
+                          
                             <li><NavLink to="/admin/dashboard/profileSetting"><FaUserAlt /> Profile Setting</NavLink></li>
                         </>
                     )}

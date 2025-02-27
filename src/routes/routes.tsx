@@ -15,6 +15,7 @@ import ProfileSetting from "../admin/users/ProfileSetting";
 import CheckOut from "../order/CheckOut";
 import Purchase from "../order/Purchase";
 import MyOrders from "../sharedComponent/MyOrders";
+import ManageOrders from "../admin/ManageOrders";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
             {
                 path : "myOrders",
                 element : <MyOrders></MyOrders>
+            },
+            {
+                path:"manageOrders",
+                element: <ManageOrders></ManageOrders>
             }
         ]
     }

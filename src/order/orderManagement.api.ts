@@ -1,6 +1,5 @@
 import { baseApi } from "../redux/api/baseapi";
 import { TOrder, TQueryParam, TResponseRedux } from "../types/global";
-
 const orderManagementApi = baseApi.injectEndpoints(
     {
         endpoints : (builder)=>({

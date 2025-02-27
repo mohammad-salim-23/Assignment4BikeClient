@@ -4,12 +4,15 @@ import { useEffect } from "react";
 import { toast } from "sonner";
 import StripeCheckout from "react-stripe-checkout";
 import Swal from "sweetalert2";
-import { useCreateOrderMutation } from "./orderManagement.api.";
+import { useCreateOrderMutation } from "./orderManagement.api";
+import { useUpdateBikeMutation } from "../admin/adminManagement.api";
 
 const Purchase = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { bikeData, quantity, userEmail } = location.state || {};
+  const { bikeData, quantity, userEmail , refetch} = location.state || {};
+  console.log("QUAN", quantity);
+     const [updatedBike] = useUpdateBikeMutation();
   const [createOrder] = useCreateOrderMutation();
 
   useEffect(() => {
@@ -37,6 +40,12 @@ const Purchase = () => {
 
     try {
       await createOrder(newOrder).unwrap();
+      //stock update
+      const updatedStock = (bikeData?.stock ?? 0) - Number(quantity);
+      // jodi stock 0 ba tar nice na hoy tokon update korbo
+      if(updatedStock>=0){
+        await updatedBike({id : bikeData?._id , bikeInfo: {stock : updatedStock}}).unwrap();
+      }
       toast.success("Payment successful! Order placed.");
       Swal.fire({
         icon: "success",
@@ -44,7 +53,8 @@ const Purchase = () => {
         showConfirmButton: false,
         timer: 2000,
       });
-
+      // refetch kore data update kore dekabe
+      refetch();
       navigate("/allProducts");
     } catch (error: any) {
       console.error("Order failed:", error);

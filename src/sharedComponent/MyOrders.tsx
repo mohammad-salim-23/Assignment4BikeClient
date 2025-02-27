@@ -1,5 +1,5 @@
 import { toast } from "sonner";
-import { useGetOrderByUserQuery } from "../order/orderManagement.api.";
+import { useGetOrderByUserQuery } from "../order/orderManagement.api";
 import { useCurrenttoken } from "../redux/features/auth/authSlice";
 import { useAppSelector } from "../redux/hooks";
 import { verifyToken } from "../utils/verifyToken";

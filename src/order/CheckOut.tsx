@@ -5,12 +5,13 @@ import { verifyToken } from "../utils/verifyToken";
 import { useAppSelector } from "../redux/hooks";
 import { useCurrenttoken } from "../redux/features/auth/authSlice";
 import { toast } from "sonner";
-
 const CheckOut = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: bikeData } = useGetSingleBikeQuery(id);
+  const { data: bikeData, refetch } = useGetSingleBikeQuery(id);
+
   const [quantity, setQuantity] = useState(1);
+
   const token = useAppSelector(useCurrenttoken);
   const user = token ? verifyToken(token) : null;
   const userEmail = user?.userId;
@@ -26,6 +27,7 @@ const CheckOut = () => {
     navigate("/purchase", {
       state: {
         bikeData: bikeData?.data,
+        refetch,
         quantity,
         userEmail,
       },
