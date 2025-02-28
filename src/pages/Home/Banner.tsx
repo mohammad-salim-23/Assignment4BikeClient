@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../../CSSdesign/All.css";
+import bike1 from "../../images/bike3.mp4";
+import bike2 from "../../images/bgVideoBike.mp4";
 
 const Banner = () => {
   return (
     <div className="carousel w-full img-style mt-12">
+      {/* Slide 1 */}
       <div id="slide1" className="carousel-item relative w-full">
-        <img 
-          src="https://i.pinimg.com/736x/58/3c/9f/583c9fb3ec2d0a3933941bde8403156c.jpg"
-          className="w-full rounded-xl object-cover"
-          alt="Bike Shop Banner"
-        />
-        
+        <video 
+          src={bike1} 
+          autoPlay 
+          loop 
+          muted 
+          className="w-full h-full object-cover rounded-xl"
+        ></video>
+
         {/* Animated Text Container */}
         <motion.div 
           initial={{ y: 100, opacity: 0 }} 
@@ -26,9 +31,15 @@ const Banner = () => {
             <p className="text-lg md:text-2xl">
               Explore top-quality bikes and accessories for every adventure.
             </p>
-            <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
-              Shop Now
-            </Link>
+            {/* Pulsing Effect on Button */}
+            <motion.div 
+  animate={{ opacity: [0.7, 1, 0.7] }} 
+  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+>
+  <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
+    Shop Now
+  </Link>
+</motion.div>
           </div>
         </motion.div>
 
@@ -40,11 +51,13 @@ const Banner = () => {
 
       {/* Slide 2 */}
       <div id="slide2" className="carousel-item relative w-full">
-        <img 
-          src="https://i.pinimg.com/736x/4e/eb/2e/4eeb2e1c7862da649ea3edf086380c48.jpg"
-          className="w-full rounded-xl object-cover"
-          alt="Bike Shop Banner"
-        />
+        <video 
+          src={bike2} 
+          autoPlay 
+          loop 
+          muted 
+          className="w-full h-full object-cover rounded-xl"
+        ></video>
 
         <motion.div 
           initial={{ y: 100, opacity: 0 }} 
@@ -59,9 +72,16 @@ const Banner = () => {
             <p className="text-lg md:text-2xl mb-4">
               Premium bikes designed for every terrain and adventure.
             </p>
-            <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor" to="/allProducts">  
-              Shop Now
-            </Link>
+            {/* Pulsing Effect on Button */}
+            <motion.div 
+  animate={{ opacity: [0.7, 1, 0.7] }} 
+  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+>
+  <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
+    Shop Now
+  </Link>
+</motion.div>
+
           </div>
         </motion.div>
 

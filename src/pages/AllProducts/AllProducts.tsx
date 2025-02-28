@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useGetAllBikesQuery } from "../../redux/features/bike/bikeManagement.api";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 const AllProducts = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,7 +14,9 @@ const AllProducts = () => {
     availability: "",
   });
 
-  if (isLoading) return <p>Loading bikes...</p>;
+  if (isLoading) {
+    return toast.loading("Loading data...");
+  }
 
   const allBikes = data?.data || [];
 
@@ -121,11 +124,13 @@ const AllProducts = () => {
       whileHover={{ scale: 1.05 }}
       className="bg-black p-4 shadow-md rounded-lg"
     >
-      <img
-        src={bike.image}
-        alt={bike.name}
-        className="w-full h-48 object-cover mb-3 rounded"
-      />
+    <motion.img
+  src={bike.image}
+  alt={bike.name}
+  className="w-full h-48 object-cover mb-3 rounded"
+  whileHover={{ rotate: [0, -10, 10, 0] }} // Rotate left & right
+  transition={{ duration: 0.6,  repeatType: "mirror" }} 
+/>
       <h3 className="text-lg font-bold text-white">{bike.name}</h3>
       <p className="text-gray-300"><strong>Brand:</strong> {bike.brand}</p>
       <p className="text-gray-300"><strong>Model:</strong> {bike.model}</p>

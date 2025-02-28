@@ -1,7 +1,14 @@
+import { motion } from "framer-motion";
+
 const About = () => {
     return (
-        <div className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6 flex flex-col md:flex-row gap-6 items-center">
-      
+        <motion.div 
+            initial={{ rotateY: 180, opacity: 0 }} 
+            animate={{ rotateY: 0, opacity: 1 }} 
+            transition={{ duration: 1 }}
+            className="max-w-6xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6 flex flex-col md:flex-row gap-6 items-center"
+        >
+            {/* Left Side: Image */}
             <div className="md:w-5/12">
                 <img 
                     src="https://i.pinimg.com/736x/6c/a6/e1/6ca6e1f148e86b145ee5240082236a31.jpg" 
@@ -25,7 +32,7 @@ const About = () => {
                     Thank you for choosing us as your trusted bike shop. Ride with confidence and explore new horizons!
                 </p>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

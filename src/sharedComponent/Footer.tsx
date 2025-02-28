@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-center text-gray-500 mt-4">© {new Date().getFullYear()} Your Bike Shop. All rights reserved.</p>
+        <p className="text-center text-gray-500 mt-4">© {new Date().getFullYear()} Moto Bike Shop. All rights reserved.</p>
       </footer>
     );
   };
