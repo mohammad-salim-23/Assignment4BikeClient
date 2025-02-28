@@ -115,7 +115,7 @@ const AllProducts = () => {
      {/* Bike Cards */}
 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
   {filteredBikes.length > 0 ? (
-    filteredBikes.map((bike, index) => (
+    filteredBikes.map((bike,index ) => (
       <motion.div
       key={bike._id}
       initial={{ opacity: 0, y: 50 }}
@@ -128,7 +128,7 @@ const AllProducts = () => {
   src={bike.image}
   alt={bike.name}
   className="w-full h-48 object-cover mb-3 rounded"
-  whileHover={{ rotate: [0, -10, 10, 0] }} // Rotate left & right
+  
   transition={{ duration: 0.6,  repeatType: "mirror" }} 
 />
       <h3 className="text-lg font-bold text-white">{bike.name}</h3>

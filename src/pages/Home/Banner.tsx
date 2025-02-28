@@ -34,7 +34,7 @@ const Banner = () => {
             {/* Pulsing Effect on Button */}
             <motion.div 
   animate={{ opacity: [0.7, 1, 0.7] }} 
-  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
 >
   <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
     Shop Now
@@ -75,7 +75,7 @@ const Banner = () => {
             {/* Pulsing Effect on Button */}
             <motion.div 
   animate={{ opacity: [0.7, 1, 0.7] }} 
-  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
 >
   <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
     Shop Now

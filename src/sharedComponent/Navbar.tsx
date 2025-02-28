@@ -52,6 +52,9 @@ const Navbar = () => {
         <li>
           <Link to="/about" className="hover:text-orange-400 transition">About</Link>
         </li>
+        <li>
+          <Link to="/contact" className="hover:text-orange-400 transition">Contact Us</Link>
+        </li>
       </ul>
 
       {/* Right Section*/}
@@ -101,6 +104,11 @@ const Navbar = () => {
             <li>
               <Link to="/about" className="hover:text-orange-400" onClick={() => setMenuOpen(false)}>
                 About
+              </Link>
+            </li>
+            <li>
+              <Link to="/contact" className="hover:text-orange-400" onClick={() => setMenuOpen(false)}>
+                Contact Us
               </Link>
             </li>
             {user && (

@@ -16,6 +16,7 @@ import CheckOut from "../order/CheckOut";
 import Purchase from "../order/Purchase";
 import MyOrders from "../sharedComponent/MyOrders";
 import ManageOrders from "../admin/ManageOrders";
+import ContactUs from "../pages/ContactUs";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
             {
                 path : "/purchase",
                 element: <Purchase></Purchase>
+            },
+            {
+                path:"/contact",
+                element: <ContactUs></ContactUs>
             }
         
             
