@@ -10,9 +10,10 @@ import { useUpdateBikeMutation } from "../admin/adminManagement.api";
 const Purchase = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { bikeData, quantity, userEmail , refetch} = location.state || {};
-  console.log("QUAN", quantity);
-     const [updatedBike] = useUpdateBikeMutation();
+  const { bikeData, quantity, userEmail} = location.state || {};
+  console.log("QUANTITY:", quantity);
+
+  const [updateBike] = useUpdateBikeMutation();
   const [createOrder] = useCreateOrderMutation();
 
   useEffect(() => {
@@ -39,13 +40,17 @@ const Purchase = () => {
     };
 
     try {
-      await createOrder(newOrder).unwrap();
-      //stock update
+      await createOrder(newOrder).unwrap(); 
+
+      // Update stock only if stock is available
       const updatedStock = (bikeData?.stock ?? 0) - Number(quantity);
-      // jodi stock 0 ba tar nice na hoy tokon update korbo
-      if(updatedStock>=0){
-        await updatedBike({id : bikeData?._id , bikeInfo: {stock : updatedStock}}).unwrap();
+      if (updatedStock >= 0) {
+        await updateBike({
+          id: bikeData?._id,
+          bikeInfo: { stock: updatedStock },
+        }).unwrap(); 
       }
+
       toast.success("Payment successful! Order placed.");
       Swal.fire({
         icon: "success",
@@ -53,8 +58,8 @@ const Purchase = () => {
         showConfirmButton: false,
         timer: 2000,
       });
-      // refetch kore data update kore dekabe
-      refetch();
+
+ 
       navigate("/allProducts");
     } catch (error: any) {
       console.error("Order failed:", error);
@@ -69,7 +74,9 @@ const Purchase = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-black p-6">
       <div className="border border-gray-700 bg-gray-900 shadow-xl p-6 rounded-lg max-w-4xl w-full">
-        <h2 className="text-3xl font-bold text-center text-white mb-6 uppercase">Purchase</h2>
+        <h2 className="text-3xl font-bold text-center text-white mb-6 uppercase">
+          Purchase
+        </h2>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">
           {/* Product Image */}
           <div className="md:w-1/2 w-full">
@@ -88,12 +95,14 @@ const Purchase = () => {
             </p>
             <p className="text-gray-400">Quantity: {quantity}</p>
             <p className="text-xl font-medium text-gray-300 mt-4">
-              Total Price: <span className="text-orange-400">${(bikeData?.price ?? 0) * quantity}</span>
+              Total Price:{" "}
+              <span className="text-orange-400">
+                ${(bikeData?.price ?? 0) * quantity}
+              </span>
             </p>
 
             <div className="mt-6">
               <StripeCheckout
-               
                 stripeKey={import.meta.env.VITE_APP_STRIPE_PUBLIC_KEY || ""}
                 token={handleToken}
                 amount={(bikeData?.price ?? 0) * quantity * 100}
