@@ -21,7 +21,7 @@ const ProductDetails = () => {
     // Function to handle Buy Now click
     const handleBuyNow = () => {
         if (!token) {
-            return navigate("/signin"); // Redirect to sign-in if not logged in
+            return navigate("/signup"); 
         }
         navigate(`/checkout/${bike?._id}`);
     };
