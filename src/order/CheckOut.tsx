@@ -8,7 +8,7 @@ import { toast } from "sonner";
 const CheckOut = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { data: bikeData, refetch } = useGetSingleBikeQuery(id);
+  const { data: bikeData } = useGetSingleBikeQuery(id);
 
   const [quantity, setQuantity] = useState(1);
 
@@ -27,7 +27,7 @@ const CheckOut = () => {
     navigate("/purchase", {
       state: {
         bikeData: bikeData?.data,
-        refetch,
+      
         quantity,
         userEmail,
       },

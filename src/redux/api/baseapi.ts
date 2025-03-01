@@ -5,7 +5,7 @@ import { BaseQueryApi, BaseQueryFn, createApi, DefinitionType, FetchArgs, fetchB
 import { toast } from "sonner";
 import { RootState } from "../store";
 const baseQuery = fetchBaseQuery({
-    baseUrl:'http://localhost:5000/api',
+    baseUrl:'https://bikeshopserver-two.vercel.app/api',
     credentials: 'include',
     prepareHeaders: (headers, {getState})=>{
         const token = (getState() as RootState).auth.token;

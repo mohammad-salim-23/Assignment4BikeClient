@@ -1,50 +1,66 @@
-# React + TypeScript + Vite
+Bike Shop Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend client for the Bike Shop project, providing a user-friendly interface for browsing bikes, managing orders, and handling user authentication.
 
-Currently, two official plugins are available:
+Features 🚀
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Bike Listing: View available bikes with details.
 
-## Expanding the ESLint configuration
+Order Management:  manage orders.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+User Authentication: Secure login and registration system.
 
-- Configure the top-level `parserOptions` property like this:
+Responsive Design: Optimized for mobile and desktop views.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Real-time Updates: Dynamic UI with interactive features.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Tech Stack 🛠
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+React.js - Frontend framework
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Vite - Fast development environment
+
+Tailwind CSS - Styling framework
+
+React Router - Navigation management
+Redux        - State management , Api calls
+Typescript   - For safety used type
+
+
+
+
+Installation & Setup ⚙️
+
+1️⃣ Clone the Repository
+
+git clone https://github.com/mohammad-salim-23/Assignment4BikeClient.git
+cd bike-shop-client
+
+2️⃣ Install Dependencies
+
+npm install
+
+3️⃣ Set Up Environment Variables
+
+Create a .env file and add:
+
+VITE_API_URL=http://localhost:5000/api
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_AUTH_DOMAIN=your_auth_domain
+
+4️⃣ Start the Client
+
+npm run dev
+
+Client will run on http://localhost:5173 🚴‍♂️
+
+Deployment 🌍
+
+This client is deployed on Vercel.
+To redeploy:
+
+vercel --prod
+
+Contributors ✨
+
+Mohammad Salim - Full Stack Developer

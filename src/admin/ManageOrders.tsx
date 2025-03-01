@@ -12,7 +12,7 @@ const ManageOrders = () => {
   const [updateOrder] = useUpdateOrderMutation();
   const [deleteOrder] = useDeleteOrderMutation();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedOrder, setSelectedOrder] = useState<{ _id: string; name: string; category: string; price: number; image: string } | null>(null);
+  const [selectedOrder, setSelectedOrder] = useState<{ _id: string; name: string; category: string; price: number; image: string; productBrand: string } | null>(null);
 
   if (isLoading) return <p>Loading orders...</p>;
 
@@ -124,7 +124,7 @@ const ManageOrders = () => {
             <form onSubmit={handleUpdate}>
               <div className="mb-2">
                 <label className="block font-semibold">Order Name</label>
-                <input type="text" name="name" defaultValue={selectedOrder.productName} className="w-full p-2 border rounded" required />
+                <input type="text" name="name" defaultValue={selectedOrder.name} className="w-full p-2 border rounded" required />
               </div>
               <div className="mb-2">
                 <label className="block font-semibold">Brand</label>
@@ -132,11 +132,11 @@ const ManageOrders = () => {
               </div>
               <div className="mb-2">
                 <label className="block font-semibold">Price</label>
-                <input type="number" name="price" defaultValue={selectedOrder.productPrice} className="w-full p-2 border rounded" required />
+                <input type="number" name="price" defaultValue={selectedOrder.price} className="w-full p-2 border rounded" required />
 1              </div>
               <div className="mb-2">
                 <label className="block font-semibold">Image URL</label>
-                <input type="text" name="image" defaultValue={selectedOrder.productImage} className="w-full p-2 border rounded" required />
+                <input type="text" name="image" defaultValue={selectedOrder.image} className="w-full p-2 border rounded" required />
               </div>
               <div className="flex justify-between mt-4">
                 <button type="button" className="btn bg-gray-500 text-white" onClick={() => setIsModalOpen(false)}>Cancel</button>

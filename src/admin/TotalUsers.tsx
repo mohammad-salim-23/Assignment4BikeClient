@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react";
 import { useGetAllUserQuery, useUpdateUserMutation } from "./adminManagement.api";
 import { FaToggleOn, FaToggleOff, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -22,7 +23,7 @@ const TotalUsers = () => {
     return users.slice(startIndex, startIndex + itemsPerPage);
   };
 
-  const handleToggleStatus = async (user) => {
+  const handleToggleStatus = async (user : any) => {
     try {
       const updatedStatus = !user.isBlocked; // Toggle status
       await updateUserStatus({ id: user._id, status: updatedStatus }).unwrap();
@@ -57,7 +58,7 @@ const TotalUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {getCurrentUsers().map((user , index) => (
+            {getCurrentUsers().map((user: { _id: Key | null | undefined; name: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; email: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; role: string; isBlocked: any; } , index: number) => (
               <tr key={user._id} className="border-b hover:bg-gray-100 transition">
                 <td>{(currentPage - 1) * itemsPerPage + index + 1}</td>
                 <td>{user.name}</td>
