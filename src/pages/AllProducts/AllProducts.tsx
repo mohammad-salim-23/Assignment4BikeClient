@@ -143,7 +143,7 @@ const AllProducts = () => {
       </p>
       <Link
         to={`/productDetails/${bike._id}`}
-        className="btn bg-secondaryColor mt-3 text-center flex items-center justify-center text-white hover:bg-orange-600 py-2 px-4 font-bold rounded"
+        className=" bg-secondaryColor mt-3 text-center flex items-center justify-center text-black hover:bg-orange-600 py-2 px-4 font-bold rounded"
       >
         View Details
       </Link>

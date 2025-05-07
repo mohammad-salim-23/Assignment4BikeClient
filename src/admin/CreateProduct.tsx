@@ -16,6 +16,7 @@ const CreateProduct = () => {
     model: string;
     category: string;
     price: string;
+    offerPrice?: string;
     stock: string;
     availability: string;
     engineCapacity: string;
@@ -30,6 +31,7 @@ const CreateProduct = () => {
     model: string;
     category: string;
     price: number;
+    offerPrice?: number;
     stock: number;
     availability: boolean;
     engineCapacity: number;
@@ -58,6 +60,7 @@ const CreateProduct = () => {
         model: data.model,
         category: data.category,
         price: parseFloat(data.price),
+        offerPrice: data.offerPrice ? parseFloat(data.offerPrice) : undefined,
         stock: parseInt(data.stock, 10),
         availability: data.availability === "true",
         engineCapacity: parseInt(data.engineCapacity, 10),
@@ -88,59 +91,65 @@ const CreateProduct = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto bg-white shadow-lg p-6 rounded-lg">
-      <h2 className="text-2xl font-bold mb-6 text-center text-orange-400  transition-colors">
+    <div className="w-full max-w-5xl mx-auto bg-white shadow-lg p-4 rounded-lg">
+      <h2 className="text-2xl font-bold mb-6 text-center text-orange-400 transition-colors">
         Add a New Product
       </h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-4">
-          <label className="block font-semibold">Product Name*</label>
-          <input type="text" {...register("name", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Product Name" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-semibold">Product Name*</label>
+            <input type="text" {...register("name", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Product Name" />
+          </div>
+          <div>
+            <label className="block font-semibold">Brand*</label>
+            <input type="text" {...register("brand", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Brand" />
+          </div>
+          <div>
+            <label className="block font-semibold">Model*</label>
+            <input type="text" {...register("model", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Model" />
+          </div>
+          <div>
+            <label className="block font-semibold">Category*</label>
+            <input type="text" {...register("category", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Category" />
+          </div>
+          <div>
+            <label className="block font-semibold">Price*</label>
+            <input type="number" step="0.01" {...register("price", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Price" />
+          </div>
+          <div>
+            <label className="block font-semibold">Offer Price <span className="text-gray-500 text-sm">(Optional)</span></label>
+            <input type="number" step="0.01" {...register("offerPrice")} className="w-full p-2 border rounded" placeholder="Enter Offer Price (Optional)" />
+          </div>
+          <div>
+            <label className="block font-semibold">Stock*</label>
+            <input type="number" {...register("stock", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Stock Quantity" />
+          </div>
+          <div>
+            <label className="block font-semibold">Availability*</label>
+            <select {...register("availability", { required: true })} className="w-full p-2 border rounded">
+              <option value="true">Available</option>
+              <option value="false">Unavailable</option>
+            </select>
+          </div>
+          <div>
+            <label className="block font-semibold">Engine Capacity (cc)*</label>
+            <input type="number" {...register("engineCapacity", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Engine Capacity" />
+          </div>
+          <div>
+            <label className="block font-semibold">Color (Comma Separated)*</label>
+            <input type="text" {...register("color", { required: true })} className="w-full p-2 border rounded" placeholder="e.g. Red, Blue, Black" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block font-semibold">Upload Image*</label>
+            <input type="file" {...register("image", { required: true })} className="w-full p-2 border rounded" accept="image/*" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block font-semibold">Description*</label>
+            <textarea {...register("description", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Product Description" rows={4} />
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Brand*</label>
-          <input type="text" {...register("brand", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Brand" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Model*</label>
-          <input type="text" {...register("model", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Model" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Category*</label>
-          <input type="text" {...register("category", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Category" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Price*</label>
-          <input type="number" step="0.01" {...register("price", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Price" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Stock*</label>
-          <input type="number" {...register("stock", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Stock Quantity" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Availability*</label>
-          <select {...register("availability", { required: true })} className="w-full p-2 border rounded">
-            <option value="true">Available</option>
-            <option value="false">Unavailable</option>
-          </select>
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Engine Capacity (cc)*</label>
-          <input type="number" {...register("engineCapacity", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Engine Capacity" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Color (Comma Separated)*</label>
-          <input type="text" {...register("color", { required: true })} className="w-full p-2 border rounded" placeholder="e.g. Red, Blue, Black" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Upload Image*</label>
-          <input type="file" {...register("image", { required: true })} className="w-full p-2 border rounded" accept="image/*" />
-        </div>
-        <div className="mb-4">
-          <label className="block font-semibold">Description*</label>
-          <textarea {...register("description", { required: true })} className="w-full p-2 border rounded" placeholder="Enter Product Description" rows={4} />
-        </div>
-        <button type="submit" className="w-full bg-secondaryColor text-primaryColor font-bold p-2 rounded hover:bg-orange-600">
+        <button type="submit" className="mt-6 w-full bg-secondaryColor text-primaryColor font-bold p-2 rounded hover:bg-orange-600">
           Add Product
         </button>
       </form>

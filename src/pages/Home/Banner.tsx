@@ -6,9 +6,9 @@ import bike2 from "../../images/bgVideoBike.mp4";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full img-style mt-12">
+    <div className="carousel w-full img-style mt-4 h-[20vh]">
       {/* Slide 1 */}
-      <div id="slide1" className="carousel-item relative w-full">
+      <div id="slide1" className="carousel-item relative w-full ">
         <video 
           src={bike1} 
           autoPlay 
@@ -36,7 +36,7 @@ const Banner = () => {
   animate={{ opacity: [0.7, 1, 0.7] }} 
   transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
 >
-  <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
+  <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600 cursor-pointer" to="/allProducts">  
     Shop Now
   </Link>
 </motion.div>

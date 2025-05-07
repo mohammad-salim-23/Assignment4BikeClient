@@ -17,6 +17,8 @@ import Purchase from "../order/Purchase";
 import MyOrders from "../sharedComponent/MyOrders";
 import ManageOrders from "../admin/ManageOrders";
 import ContactUs from "../pages/ContactUs";
+import Service from "../pages/Services/page";
+import AllOfferProducts from "../pages/AllOfferProducts/AllOfferProducts";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -57,6 +59,14 @@ const router = createBrowserRouter([
             {
                 path:"/contact",
                 element: <ContactUs></ContactUs>
+            },
+            {
+                path:"/services",
+                element: <Service></Service>
+            },
+            {
+                path:"/offers",
+                element : <AllOfferProducts></AllOfferProducts>
             }
         
             

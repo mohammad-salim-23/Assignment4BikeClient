@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BaseQueryApi } from "@reduxjs/toolkit/query";
 
 //Error Response Type
@@ -35,6 +36,7 @@ export type TBike = {
   model: string;
   category: string;
   price: number;
+  offerPrice?: number;
   stock: number;
   availability: boolean;
   engineCapacity: number;
