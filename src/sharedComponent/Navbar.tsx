@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-black text-white shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-50">
+    <nav className="bg-primaryColor text-white shadow-md py-3 px-4 flex justify-between items-center sticky top-0 z-10">
     {/* Left Section: Logo */}
     <div className="flex items-center gap-4">
       <Link to="/" className="text-xl font-bold">

@@ -54,7 +54,7 @@ const NewsLetter = () => {
       }}
     >
       {/* Optional dark overlay */}
-      <div className="absolute inset-0 bg-black/50 z-10" />
+      <div className="absolute inset-0 bg-primaryColor/50 z-10" />
 
       {/* Content */}
       <div className="relative z-20 text-white py-20 px-4 text-center">

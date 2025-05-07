@@ -23,7 +23,7 @@ const OfferProducts = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05 }}
-              className="bg-black p-4 shadow-md rounded-lg cursor-pointer"
+              className="bg-primaryColor p-4 shadow-md rounded-lg cursor-pointer"
             >
               <img
                 src={bike.image}

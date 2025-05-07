@@ -127,7 +127,7 @@ const handleEdit = (bike: Bike) => {
 
       {/* Update Modal */}
       {isModalOpen && selectedBike && (
-  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+  <div className="fixed inset-0 flex items-center justify-center bg-primaryColor bg-opacity-50">
     <div className="w-full max-w-lg bg-white p-6 rounded-lg">
       <h2 className="text-2xl font-bold text-center mb-4">Update Bike</h2>
       <form onSubmit={handleUpdate}>

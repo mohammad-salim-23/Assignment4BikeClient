@@ -27,7 +27,7 @@ const ProductDetails = () => {
     };
 
     return (
-        <div className="bg-black min-h-screen text-white p-6">
+        <div className="bg-primaryColor min-h-screen text-white p-6">
             <div className="max-w-6xl mx-auto p-6 bg-gray-900 shadow-lg rounded-lg mt-6 flex flex-col md:flex-row gap-8 items-start">
                 {/* Left Side: Image Gallery */}
                 <div className="md:w-2/5 flex flex-col items-center">

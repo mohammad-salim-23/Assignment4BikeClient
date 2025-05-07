@@ -35,7 +35,7 @@ const CheckOut = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black p-6">
+    <div className="flex items-center justify-center min-h-screen bg-primaryColor p-6">
       <div className="border border-gray-700 bg-gray-900 shadow-xl p-6 rounded-lg max-w-4xl w-full">
         <h2 className="text-3xl font-bold text-center text-white mb-6 uppercase">Checkout</h2>
         <div className="flex flex-col md:flex-row items-center md:items-start gap-8">

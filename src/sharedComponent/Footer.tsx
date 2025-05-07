@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaLinkedinIn } from "re
 import logo from "../images/MotorcycleLogo.png"
 const Footer = () => {
     return (
-      <footer className="bg-black text-white py-8">
+      <footer className="bg-primaryColor text-white py-8">
         <div className="container mx-auto flex flex-col md:flex-row justify-between items-center px-6">
         
           <div className="flex items-center space-x-4">
