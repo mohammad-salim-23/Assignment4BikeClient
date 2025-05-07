@@ -19,6 +19,8 @@ import ManageOrders from "../admin/ManageOrders";
 import ContactUs from "../pages/ContactUs";
 import Service from "../pages/Services/page";
 import AllOfferProducts from "../pages/AllOfferProducts/AllOfferProducts";
+import Cart from "../pages/cart/Cart";
+import ProtectedRoute from "../component/layout/ProtectedRoute";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -67,6 +69,10 @@ const router = createBrowserRouter([
             {
                 path:"/offers",
                 element : <AllOfferProducts></AllOfferProducts>
+            },
+            {
+                path: "/cart",
+                element: <ProtectedRoute><Cart /></ProtectedRoute>
             }
         
             

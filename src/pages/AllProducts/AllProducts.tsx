@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import { useGetAllBikesQuery } from "../../redux/features/bike/bikeManagement.api";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/features/cart/cartSlice";
+
 const AllProducts = () => {
   const { data, isLoading } = useGetAllBikesQuery(undefined);
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [filters, setFilters] = useState({
-    price: { min: "", max: "" }, // Fixed default price filtering
+    price: { min: "", max: "" },
     model: "",
     brand: "",
     category: "",
@@ -15,17 +19,13 @@ const AllProducts = () => {
   });
 
   if (isLoading) {
-    return toast.loading("Loading data...");
+    toast.loading("Loading data...");
+    return null;
   }
 
   const allBikes = data?.data || [];
 
-  console.log("All Bikes:", allBikes.length); 
-
-  //Filtering Logic
   const filteredBikes = allBikes.filter((bike) => {
-    console.log("Checking Bike:", bike.name); 
-
     const matchesSearch =
       bike.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       bike.brand.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -58,9 +58,8 @@ const AllProducts = () => {
 
       {/* Filters */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
-        {/* Brand Filter */}
         <select
-          className="border p-2 bg-white text-black focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+          className="border p-2 bg-white text-black"
           onChange={(e) => setFilters({ ...filters, brand: e.target.value })}
         >
           <option value="">All Brands</option>
@@ -69,20 +68,18 @@ const AllProducts = () => {
           ))}
         </select>
 
-        {/* Category Filter */}
         <select
-          className="border p-2 bg-white text-black focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+          className="border p-2 bg-white text-black"
           onChange={(e) => setFilters({ ...filters, category: e.target.value })}
         >
           <option value="">All Categories</option>
-          {Array.from(new Set(allBikes.map((b) => b.category))).map((category) => (
-            <option key={category} value={category}>{category}</option>
+          {Array.from(new Set(allBikes.map((b) => b.category))).map((cat) => (
+            <option key={cat} value={cat}>{cat}</option>
           ))}
         </select>
 
-        {/* Availability Filter */}
         <select
-          className="border p-2 bg-white text-black focus:outline-none focus:ring-2 focus:ring-secondaryColor"
+          className="border p-2 bg-white text-black"
           onChange={(e) => setFilters({ ...filters, availability: e.target.value })}
         >
           <option value="">All Availability</option>
@@ -90,7 +87,6 @@ const AllProducts = () => {
           <option value="false">Out of Stock</option>
         </select>
 
-        {/* Min Price Filter */}
         <input
           type="number"
           placeholder="Min Price"
@@ -100,7 +96,6 @@ const AllProducts = () => {
           }
         />
 
-    
         <input
           type="number"
           placeholder="Max Price"
@@ -111,49 +106,72 @@ const AllProducts = () => {
         />
       </div>
 
+      {/* Bike Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {filteredBikes.length > 0 ? (
+          filteredBikes.map((bike, index) => (
+            <motion.div
+              key={bike._id}
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              className="bg-primaryColor p-4 shadow-md rounded-lg relative"
+            >
+              <img
+                src={bike.image}
+                alt={bike.name}
+                className="w-full h-48 object-cover mb-3 rounded"
+              />
+              <h3 className="text-lg font-bold text-white">{bike.name}</h3>
+              <p className="text-gray-300"><strong>Brand:</strong> {bike.brand}</p>
+              <p className="text-gray-300"><strong>Model:</strong> {bike.model}</p>
+              <p className="text-gray-300"><strong>Category:</strong> {bike.category}</p>
+              <p className="text-gray-300"><strong>Price:</strong> ${bike.price}</p>
+              <p className="text-gray-300">
+                <strong>Availability:</strong> {bike.availability ? 
+                  <span className="text-orange-400"> In Stock</span> : 
+                  <span className="text-red-400"> Out of Stock</span>}
+              </p>
 
-     {/* Bike Cards */}
-<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-  {filteredBikes.length > 0 ? (
-    filteredBikes.map((bike,index ) => (
-      <motion.div
-      key={bike._id}
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      whileHover={{ scale: 1.05 }}
-      className="bg-primaryColor p-4 shadow-md rounded-lg"
-    >
-    <motion.img
-  src={bike.image}
-  alt={bike.name}
-  className="w-full h-48 object-cover mb-3 rounded"
-  
-  transition={{ duration: 0.6,  repeatType: "mirror" }} 
-/>
-      <h3 className="text-lg font-bold text-white">{bike.name}</h3>
-      <p className="text-gray-300"><strong>Brand:</strong> {bike.brand}</p>
-      <p className="text-gray-300"><strong>Model:</strong> {bike.model}</p>
-      <p className="text-gray-300"><strong>Category:</strong> {bike.category}</p>
-      <p className="text-gray-300"><strong>Price:</strong> ${bike.price}</p>
-      <p className="text-gray-300">
-        <strong>Availability:</strong> {bike.availability ? 
-          <span className="text-orange-400"> In Stock</span> : 
-          <span className="text-red-400"> Out of Stock</span>}
-      </p>
-      <Link
-        to={`/productDetails/${bike._id}`}
-        className=" bg-secondaryColor mt-3 text-center flex items-center justify-center text-black hover:bg-orange-600 py-2 px-4 font-bold rounded"
-      >
-        View Details
-      </Link>
-    </motion.div>
-    ))
-  ) : (
-    <p className="text-white">No bikes found.</p>
-  )}
-</div>
-
+              {/* Buttons */}
+              <div className="grid grid-cols-2 mt-3 gap-2">
+                <Link
+                  to={`/productDetails/${bike._id}`}
+                  className="bg-white text-black hover:bg-gray-300 text-center py-2 font-semibold"
+                >
+                  View Details
+                </Link>
+                <button
+                  disabled={!bike.availability}
+                  onClick={() => {
+                    dispatch(
+                      addToCart({
+                        _id: bike._id,
+                        name: bike.name,
+                        price: bike.price,
+                        image: bike.image,
+                        quantity: 1,
+                      })
+                    );
+                    toast.success("Added to cart!");
+                  }}
+                  className={`py-2 px-4 rounded font-bold ${
+                    bike.availability
+                      // ? ""
+                      ?"bg-secondaryColor text-center text-black hover:bg-orange-600 py-2 px-4 font-bold rounded"
+                      : "bg-gray-500 text-gray-300 cursor-not-allowed"
+                  }`}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </motion.div>
+          ))
+        ) : (
+          <p className="text-white">No bikes found.</p>
+        )}
+      </div>
     </div>
   );
 };

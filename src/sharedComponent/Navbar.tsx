@@ -6,12 +6,17 @@ import { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi"; 
 import logo from "../images/MotorcycleLogo.png";
 
+
+
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const token = useAppSelector(useCurrenttoken);
   const user = token ? verifyToken(token) : null;
   const dispatch = useAppDispatch();
-
+  const totalItems = useAppSelector((state) =>
+    state.cart.items.reduce((sum, item) => sum + item.quantity, 0)
+  );
+  
   const handleLogout = () => {
     dispatch(logout());
   };
@@ -26,6 +31,12 @@ const Navbar = () => {
           alt="Logo"
           className="h-14 w-auto md:h-14 lg:h-18"
         />
+      </Link>
+      <Link to="/cart" className="relative lg:hidden">
+        🛒
+        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded">
+          {totalItems}
+        </span>
       </Link>
       {!user && (
         <Link to="/signup" className="md:hidden">
@@ -64,6 +75,12 @@ const Navbar = () => {
   
     {/* Right Section */}
     <div className="hidden md:flex items-center gap-4">
+    <Link to="/cart" className="relative">
+        🛒
+        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded">
+          {totalItems}
+        </span>
+      </Link>
       {!user ? (
         <div className="flex gap-3">
           <Link to="/login">
