@@ -34,7 +34,7 @@ const Navbar = () => {
       </Link>
       <Link to="/cart" className="relative lg:hidden">
         🛒
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded">
+        <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs px-1 rounded">
           {totalItems}
         </span>
       </Link>
@@ -77,7 +77,7 @@ const Navbar = () => {
     <div className="hidden md:flex items-center gap-4">
     <Link to="/cart" className="relative">
         🛒
-        <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded">
+        <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs px-1 rounded">
           {totalItems}
         </span>
       </Link>
