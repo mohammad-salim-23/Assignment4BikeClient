@@ -1,13 +1,15 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,  useParams } from "react-router-dom";
 import { useGetSingleBikeQuery, useGetAllBikesQuery } from "../redux/features/bike/bikeManagement.api";
-import { useAppSelector } from "../redux/hooks"; 
-import { useCurrenttoken } from "../redux/features/auth/authSlice";
+import { useAppDispatch, } from "../redux/hooks"; 
+
+import { toast } from "sonner";
+import { addToCart } from "../redux/features/cart/cartSlice";
 
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const navigate = useNavigate();
-    const token = useAppSelector(useCurrenttoken); 
+    const dispatch = useAppDispatch();
+  
 
     const { data, isLoading, error } = useGetSingleBikeQuery(id);
     const bike = data?.data;
@@ -18,13 +20,7 @@ const ProductDetails = () => {
 
     const similarBikes = allBikes?.data?.filter(b => b.category === bike?.category && b._id !== bike?._id);
 
-    // Function to handle Buy Now click
-    const handleBuyNow = () => {
-        if (!token) {
-            return navigate("/signup"); 
-        }
-        navigate(`/checkout/${bike?._id}`);
-    };
+  
 
     return (
         <div className="bg-primaryColor min-h-screen text-white p-6">
@@ -53,14 +49,40 @@ const ProductDetails = () => {
                     <p className="text-lg font-semibold text-orange-400"><strong>Price:</strong> ${bike?.price}</p>
 
                     {/* Buy Now Button */}
-                    <div className="flex gap-4 mt-4">
-                        <button 
-                            onClick={handleBuyNow} 
-                            className="bg-orange-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-orange-600 transition"
-                        >
-                            Buy Now
-                        </button>
-                    </div>
+                   <div className="grid grid-cols-2 mt-3 gap-2">
+                   
+                    <button
+                      disabled={!bike?.availability}
+                      onClick={() => {
+                        dispatch(
+                          addToCart({
+                            _id: bike?._id ?? "",
+                            name: bike?.name ?? "Bike",
+                            price: bike?.price ?? 0,
+                            image: bike?.image ?? "",
+                            quantity: 1,
+                          })
+                        );
+                        toast.success(
+                          <span>
+                            <span className="font-bold text-orange-400">{bike?.name ?? "Bike"}</span> added to cart successfully!
+                          </span>,
+                          {
+                            duration: 3000,
+                            className: "bg-green-700 text-white shadow px-3 py-2 rounded",
+                          }
+                        );
+                      }}
+                      className={`text-sm font-medium py-1.5 rounded ${
+                        bike?.availability
+                          ? "bg-secondaryColor text-black hover:bg-orange-500"
+                          : "bg-gray-500 text-gray-300 cursor-not-allowed"
+                      }`}
+                    >
+                      Add to Cart
+                    </button>
+                  </div>
+                  
                 </div>
             </div>
 

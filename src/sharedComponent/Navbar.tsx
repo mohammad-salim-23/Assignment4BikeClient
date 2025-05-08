@@ -32,7 +32,7 @@ const Navbar = () => {
           className="h-14 w-auto md:h-14 lg:h-18"
         />
       </Link>
-      <Link to="/cart" className="relative lg:hidden">
+      <Link to="/cart" className="relative md:hidden">
         🛒
         <span className="absolute -top-2 -right-2 bg-orange-600 text-white text-xs px-1 rounded">
           {totalItems}

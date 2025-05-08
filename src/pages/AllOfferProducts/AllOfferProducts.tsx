@@ -22,7 +22,7 @@ const AllOfferProducts = () => {
   const offerBikes = allBikes.filter((bike) => bike?.offerPrice);
   // Error or Loading UI
   if (isLoading) {
-    toast.loading("Loading data...");
+ 
     return <p className="text-white text-center mt-10">Loading bikes...</p>;
   }
 

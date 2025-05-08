@@ -48,7 +48,17 @@ const Cart = () => {
     <p>Subtotal: ${subtotal.toFixed(2)}</p>
     <p>Shipping: Free</p>
     <h4 className="text-xl mt-2 font-bold">Total: ${subtotal.toFixed(2)}</h4>
-    <button className="bg-orange-500 text-black font-bold py-2 px-4 rounded w-full hover:bg-orange-600">Proceed to Checkout</button>
+    <button
+  className="bg-orange-500 text-black font-bold py-2 px-4 rounded w-full hover:bg-orange-600"
+  onClick={() =>
+    navigate("/checkout", {
+      state: { cart, subtotal, userEmail: currentUser?.email || "guest@example.com" }
+    })
+  }
+>
+  Proceed to Checkout
+</button>
+
     <Link to="/allProducts"><button className="w-full text-orange-600">Continue Shopping</button></Link>
   </div>
 </div>
