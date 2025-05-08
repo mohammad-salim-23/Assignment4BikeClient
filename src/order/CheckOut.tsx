@@ -6,8 +6,11 @@ import { toast } from "sonner";
 import Swal from "sweetalert2";
 import { useCreateOrderMutation } from "../order/orderManagement.api";
 import { MapPin } from "lucide-react";
+import { clearCart } from "../redux/features/cart/cartSlice";
+import { useAppDispatch } from "../redux/hooks";
 
 const Checkout = () => {
+  const dispatch = useAppDispatch();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -53,7 +56,9 @@ const Checkout = () => {
       await createOrder(payload).unwrap(); // single request
       toast.success("Payment successful!");
       Swal.fire("Success", "Your order has been placed", "success");
+      dispatch(clearCart());
       navigate("/allProducts");
+
     } catch (error: any) {
       console.error("Error creating order:", error.data);
       Swal.fire("Error", error?.data?.message || error?.message || "Order failed", "error");
