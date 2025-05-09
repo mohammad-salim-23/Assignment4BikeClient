@@ -1,13 +1,12 @@
-import { ReactNode } from "react";
+
 import {  TUser, useCurrenttoken } from "../../redux/features/auth/authSlice"
 import {useAppSelector } from "../../redux/hooks"
 import { verifyToken } from "../../utils/verifyToken";
 import { Navigate } from "react-router-dom";
-type TProtectedRoute = {
-    children : ReactNode,
-    role : string | undefined;
-}
-const ProtectedRoute = ({children, role}: TProtectedRoute)=>{
+
+import { ReactNode } from "react";
+
+const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     const token = useAppSelector(useCurrenttoken);
     let  user ; 
     if(token){
@@ -18,6 +17,7 @@ const ProtectedRoute = ({children, role}: TProtectedRoute)=>{
     if(!user){
      <p>loading....</p>
     }
+    const role = user?.role;
    console.log(role);
    if(role !== undefined && role !== (user as  TUser)?.role){
     return <Navigate to="/login" replace = {true}/>

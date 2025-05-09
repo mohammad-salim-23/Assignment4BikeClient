@@ -13,16 +13,7 @@ const MyProfile = () => {
       <div className="relative w-full h-64 bg-cover bg-center" style={{ backgroundImage: "url('https://i.pinimg.com/736x/e3/55/20/e355202816788c697e754df24118d1ad.jpg')" }}>
         {/* Profile Avatar */}
         <div className="absolute left-1/2 transform -translate-x-1/2 bottom-[-48px]">
-          {user?.photoU ? (
-            <Avatar
-              size={96}
-              style={{
-                backgroundImage: `url(${user.photoURL})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            />
-          ) : (
+           
           <Avatar
   size={96}
   style={{
@@ -31,14 +22,14 @@ const MyProfile = () => {
     backgroundPosition: "center",
   }}
 />
-          )}
+          
         </div>
       </div>
 
       {/* Profile Info */}
       <div className="mt-10 px-4 max-w-3xl mx-auto">
         <div className=" rounded-lg p-6 text-center">
-          <h2 className="text-2xl font-bold mb-2">{user?.name || "John"}</h2>
+          <h2 className="text-2xl font-bold mb-2">{ "John"}</h2>
           <p className="text-gray-600 mb-1">Email: {user?.userId}</p>
           <p className="text-gray-500">Role: {user?.role}</p>
         </div>

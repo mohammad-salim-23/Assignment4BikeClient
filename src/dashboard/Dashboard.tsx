@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { Dropdown, Avatar, Space } from "antd";
 import { toast } from "sonner";
-import Overview from "./Overview/Overview";
+
 
 
 const Dashboard = () => {

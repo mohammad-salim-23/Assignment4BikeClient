@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { Card, Col, Row, Table } from "antd";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend, ResponsiveContainer } from "recharts";
@@ -87,7 +88,7 @@ const Overview = ({ role }: { role: string }) => {
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie data={orderStatusPie} cx="50%" cy="50%" outerRadius={80} fill="#8884d8" dataKey="value" label>
-                  {orderStatusPie.map((entry, index) => (
+                  {orderStatusPie.map(( index :any) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>
