@@ -28,31 +28,26 @@ TypeScript – Type-safe development
 ⚙️ Installation & Setup
 1️⃣ Clone the Repository
 
-bash
-Copy
-Edit
+
 git clone https://github.com/mohammad-salim-23/Assignment4BikeClient.git
 cd bike-shop-client
+
 2️⃣ Install Dependencies
 
-bash
-Copy
-Edit
 npm install
+
 3️⃣ Set Up Environment Variables
 Create a .env file in the root directory and add:
 
-env
-Copy
-Edit
+.env
+
 VITE_API_URL=http://localhost:5000/api
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 VITE_AUTH_DOMAIN=your_auth_domain
+
 4️⃣ Start the Development Server
 
-bash
-Copy
-Edit
+
 npm run dev
 The client will run at: http://localhost:5173
 
@@ -60,14 +55,12 @@ The client will run at: http://localhost:5173
 This client is deployed on Vercel.
 To redeploy manually:
 
-bash
-Copy
-Edit
 vercel --prod
 🔗 Live Project: https://bike-shop-client-six.vercel.app
 🖥️ Server Code:https://github.com/mohammad-salim-23/BikeShopServer-L2
 
 🔐 Admin Credentials
+
 Email: admin@example.com
 
 Password: Admin123@
