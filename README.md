@@ -61,6 +61,12 @@ To redeploy:
 
 vercel --prod
 
+project live-link: https://bike-shop-client-six.vercel.app
+server code  : https://github.com/mohammad-salim-23/BikeShopServer-L2
+Admin-credentials:
+email: admin@example.com
+password: Admin123@
+
 Contributors ✨
 
 Mohammad Salim - Full Stack Developer
