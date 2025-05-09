@@ -21,6 +21,7 @@ import Service from "../pages/Services/page";
 import AllOfferProducts from "../pages/AllOfferProducts/AllOfferProducts";
 import Cart from "../pages/cart/Cart";
 import ProtectedRoute from "../component/layout/ProtectedRoute";
+import Overview from "../dashboard/Overview/Overview";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
                     <Dashboard></Dashboard>
         ,
         children:[
+            {
+  index: true,
+  element: <Overview role="user || admin"/>,
+},
             {
                 path: "createProduct",
                 element: <CreateProduct></CreateProduct>

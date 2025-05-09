@@ -49,7 +49,7 @@ const SignUp = () => {
       console.log(user);
       dispatch(setUser({ user: user, token: res?.data?.accessToken }));
       toast.success("Signed up successfully!", { id: toastId, duration: 2000 });
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       console.error(err);
       toast.error("Something went wrong", { id: toastId, duration: 2000 });

@@ -6,40 +6,41 @@ import bike2 from "../../images/bgVideoBike.mp4";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full img-style mt-4 h-[20vh]">
+    <div className="carousel w-full img-style mt-4 h-[40vh] md:h-[70vh] rounded-xl overflow-hidden">
       {/* Slide 1 */}
-      <div id="slide1" className="carousel-item relative w-full ">
+      <div id="slide1" className="carousel-item relative w-full">
         <video 
           src={bike1} 
           autoPlay 
           loop 
           muted 
-          className="w-full h-full object-cover rounded-xl"
+          className="w-full h-full object-cover"
         ></video>
 
-        {/* Animated Text Container */}
         <motion.div 
           initial={{ y: 100, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }} 
           transition={{ duration: 1, ease: "easeOut" }}
-          className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#1E3A8A] to-[rgba(255, 255, 255, 0.7)]"
+          className="absolute inset-0 flex items-center bg-gradient-to-r from-[#1E3A8A] to-[rgba(255, 255, 255, 0.7)]"
         >
-          <div className="text-white space-y-6 p-6 md:pl-12 w-3/4 md:w-1/2">
-            <h2 className="text-3xl md:text-6xl font-bold">
+          <div className="text-white space-y-4 px-4 md:px-12 max-w-md w-full">
+            <h2 className="text-2xl md:text-5xl font-bold">
               Discover Your Perfect Ride 🚴‍♂️
             </h2>
-            <p className="text-lg md:text-2xl">
+            <p className="text-base md:text-xl">
               Explore top-quality bikes and accessories for every adventure.
             </p>
-            {/* Pulsing Effect on Button */}
             <motion.div 
-  animate={{ opacity: [0.7, 1, 0.7] }} 
-  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
->
-  <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600 cursor-pointer" to="/allProducts">  
-    Shop Now
-  </Link>
-</motion.div>
+              animate={{ opacity: [0.7, 1, 0.7] }} 
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Link 
+                to="/allProducts"
+                className="btn text-base md:text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600"
+              >
+                Shop Now
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
 
@@ -56,32 +57,33 @@ const Banner = () => {
           autoPlay 
           loop 
           muted 
-          className="w-full h-full object-cover rounded-xl"
+          className="w-full h-full object-cover"
         ></video>
 
         <motion.div 
           initial={{ y: 100, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }} 
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#1E3A8A] to-[rgba(255, 255, 255, 0.7)]"
+          className="absolute inset-0 flex items-center bg-gradient-to-r from-[#1E3A8A] to-[rgba(255, 255, 255, 0.7)]"
         >
-          <div className="text-white space-y-6 p-6 md:pl-12 w-3/4 md:w-1/2">
-            <h2 className="text-3xl md:text-6xl font-bold">
-              Unleash Your Cycling Passion 
+          <div className="text-white space-y-4 px-4 md:px-12 max-w-md w-full">
+            <h2 className="text-2xl md:text-5xl font-bold">
+              Unleash Your Cycling Passion
             </h2>
-            <p className="text-lg md:text-2xl mb-4">
+            <p className="text-base md:text-xl">
               Premium bikes designed for every terrain and adventure.
             </p>
-            {/* Pulsing Effect on Button */}
             <motion.div 
-  animate={{ opacity: [0.7, 1, 0.7] }} 
-  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
->
-  <Link className="btn text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600" to="/allProducts">  
-    Shop Now
-  </Link>
-</motion.div>
-
+              animate={{ opacity: [0.7, 1, 0.7] }} 
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Link 
+                to="/allProducts"
+                className="btn text-base md:text-lg px-6 py-2 rounded-lg shadow-md bg-secondaryColor hover:bg-orange-600"
+              >
+                Shop Now
+              </Link>
+            </motion.div>
           </div>
         </motion.div>
 

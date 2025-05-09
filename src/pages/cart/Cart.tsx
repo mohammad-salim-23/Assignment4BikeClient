@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { removeFromCart, updateQuantity } from "../../redux/features/cart/cartSlice";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate for redirection
+import { Link, useNavigate } from "react-router-dom"; 
 import { selectCurrentUser } from "../../redux/features/auth/authSlice";
 
 
 const Cart = () => {
 
   const cart = useSelector((state: RootState) => state.cart.items);
-  const currentUser = useSelector(selectCurrentUser); // Get current user from the auth slice
+  const currentUser = useSelector(selectCurrentUser); 
   const dispatch = useDispatch();
   const navigate = useNavigate(); // Use useNavigate for redirection
 
