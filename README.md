@@ -1,72 +1,76 @@
-Bike Shop Client
-
+🚴‍♂️ Bike Shop Client
 This is the frontend client for the Bike Shop project, providing a user-friendly interface for browsing bikes, managing orders, and handling user authentication.
 
-Features 🚀
-
+🌟 Features
 Bike Listing: View available bikes with details.
 
-Order Management:  manage orders.
+Order Management: Place, view, and manage orders.
 
 User Authentication: Secure login and registration system.
 
-Responsive Design: Optimized for mobile and desktop views.
+Responsive Design: Optimized for both mobile and desktop.
 
-Real-time Updates: Dynamic UI with interactive features.
+Real-time Updates: Interactive UI with dynamic content.
 
-Tech Stack 🛠
+🛠 Tech Stack
+React.js – Frontend library
 
-React.js - Frontend framework
+Vite – Fast development environment
 
-Vite - Fast development environment
+Tailwind CSS – Utility-first CSS framework
 
-Tailwind CSS - Styling framework
+React Router – Navigation and routing
 
-React Router - Navigation management
-Redux        - State management , Api calls
-Typescript   - For safety used type
+Redux Toolkit – State management and API calls
 
+TypeScript – Type-safe development
 
-
-
-Installation & Setup ⚙️
-
+⚙️ Installation & Setup
 1️⃣ Clone the Repository
 
+bash
+Copy
+Edit
 git clone https://github.com/mohammad-salim-23/Assignment4BikeClient.git
 cd bike-shop-client
-
 2️⃣ Install Dependencies
 
+bash
+Copy
+Edit
 npm install
-
 3️⃣ Set Up Environment Variables
+Create a .env file in the root directory and add:
 
-Create a .env file and add:
-
+env
+Copy
+Edit
 VITE_API_URL=http://localhost:5000/api
 VITE_FIREBASE_API_KEY=your_firebase_api_key
 VITE_AUTH_DOMAIN=your_auth_domain
+4️⃣ Start the Development Server
 
-4️⃣ Start the Client
-
+bash
+Copy
+Edit
 npm run dev
+The client will run at: http://localhost:5173
 
-Client will run on http://localhost:5173 🚴‍♂️
-
-Deployment 🌍
-
+🌍 Deployment
 This client is deployed on Vercel.
-To redeploy:
+To redeploy manually:
 
+bash
+Copy
+Edit
 vercel --prod
+🔗 Live Project: https://bike-shop-client-six.vercel.app
+🖥️ Server Code:https://github.com/mohammad-salim-23/BikeShopServer-L2
 
-project live-link: https://bike-shop-client-six.vercel.app
-server code  : https://github.com/mohammad-salim-23/BikeShopServer-L2
-Admin-credentials:
-email: admin@example.com
-password: Admin123@
+🔐 Admin Credentials
+Email: admin@example.com
 
-Contributors ✨
+Password: Admin123@
 
-Mohammad Salim - Full Stack Developer
+✨ Contributors
+Mohammad Salim – Full Stack Developer
